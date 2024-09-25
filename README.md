@@ -2,7 +2,9 @@
 
 Make a fullstack website to play Pong (Youpi...)
 
-## STACK
+## STACK (JBDS)
+
+> JBDS stack is so popular right ??
 
 - FRONTEND : Vanilla JS [Documentation](https://www.w3schools.com/js/DEFAULT.asp)
 - CSS library : Bootstrap toolkit [Documentation](https://getbootstrap.com/)
