@@ -12,56 +12,37 @@
 - Compatible with ***Google Chrome***
 - Everything must be launched with a single command line (Docker)
 
-
 ## GAME
 
-The main purpose of this website is to play Pong versus other players :
+The primary objective of this website is to facilitate Pong gameplay between users. Here are the key features:
 
-1. Therefore, users must have the ability to participate in a live Pong game against
-another player directly on the website. Both players will use the same keyboard.
-The Remote players module can enhance this functionality with remote players.
-2. A player must be able to play against another player, but it should also be possible
-to propose a tournament. This tournament will consist of multiple players who
-can take turns playing against each other. You have flexibility in how you implement
-the tournament, but it must clearly display who is playing against whom and the
-order of the players.
-3. A registration system is required: at the start of a tournament, each player
-must input their alias name. The aliases will be reset when a new tournament
-begins. However, this requirement can be modified using the Standard User
-Management module.
-4. There must be a matchmaking system: the tournament system organize the
-matchmaking of the participants, and announce the next fight.
-5. All players must adhere to the same rules, which includes having identical paddle
-speed. This requirement also applies when using AI; the AI must exhibit the same
-speed as a regular player.
-6. The game itself must be developed in accordance with the default frontend con-
-straints (as outlined above), or you may choose to utilize the FrontEnd module,
-or you have the option to override it with the Graphics module. While the visual
-aesthetics can vary, it must still capture the essence of the original Pong (1972).
+- **Live Pong Gameplay**: Users should be able to engage in a live Pong game against another player directly on the website. Both players will use the same keyboard. The functionality can be enhanced with the Remote players module.
+
+- **Tournament Mode**: Besides one-on-one games, users should also have the option to propose a tournament. This tournament will involve multiple players taking turns to play against each other. The implementation of the tournament is flexible, but it should clearly display the match-ups and the player order.
+
+- **Registration System**: A registration system is necessary. At the start of a tournament, each player must input their alias. These aliases will be reset when a new tournament begins. The Standard User Management module can modify this requirement.
+
+- **Matchmaking System**: The tournament system should organize the matchmaking of the participants and announce the upcoming match.
+
+- **Uniform Game Rules**: All players must follow the same rules, including having identical paddle speed. This rule also applies to AI players; the AI must operate at the same speed as a human player.
+
+- **Game Development**: The game must be developed in accordance with the default frontend constraints (as outlined above). Alternatively, the FrontEnd module can be used, or it can be overridden with the Graphics module. Regardless of the visual aesthetics, the game must retain the essence of the original Pong (1972).
 
 ## SECURITY
 
-1. Any password stored in your database, if applicable, must be hashed.
-2. Your website must be protected against SQL injections/XSS.
-3. If you have a backend or any other features, it is mandatory to enable an HTTPS
-connection for all aspects (Utilize wss instead of ws...).
-4. You must implement some form of validation for forms and any user input, either
-within the base page if no backend is used or on the server side if a backend is
-employed.
-5. Regardless of whether you choose to implement the JWT Security module with
-2FA, it’s crucial to prioritize the security of your website. For instance, if you opt
-to create an API, ensure your routes are protected. Remember, even if you decide
-not to use JWT tokens, securing the site remains essential.
-
+1. **Password Hashing**: If your database stores passwords, ensure they are hashed.
+2. **Protection Against Attacks**: Your website should be safeguarded against SQL injections and XSS.
+3. **HTTPS Connection**: If your site features a backend or other elements, activating an HTTPS connection for all components is compulsory. Use wss instead of ws.
+4. **Input Validation**: Implement a validation system for forms and user input. This can be done on the base page if there's no backend, or server-side if a backend is present.
+5. **Website Security**: Prioritizing your website's security is crucial, whether or not you choose to implement the JWT Security module with 2FA. For example, if you decide to develop an API, make sure your routes are secure. Even if you choose not to use JWT tokens, the security of your site remains paramount.
 
 ## Modules
 
-For 100% : 7 major modules required
-> Two Minor Modules are equivalent to one Major Module.
+To achieve 100% completion, you need to complete 7 major modules.
 
-Bonus :
-> Five points will be awarded for each minor module
+**Note** : Please note that two minor modules are equivalent to one major module.
 
-> Ten points will be awarded for each major module.
+### Bonus Points
 
-// need to concert with everyone for that
+- Each minor module completed will earn you an additional five points.
+- Each major module completed will earn you an additional ten points.
