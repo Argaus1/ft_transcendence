@@ -7,6 +7,9 @@ Make a fullstack website to play Pong (Youpi...)
 - FRONTEND : Vanilla JS [Documentation](https://www.w3schools.com/js/DEFAULT.asp)
 - CSS library : Bootstrap toolkit [Documentation](https://getbootstrap.com/)
 - BACKEND : Django (Python) [Documentation](https://docs.djangoproject.com/en/5.1/)
+- DB : PostgreSQL [Documentation](https://www.postgresql.org/docs/current/) [Container](https://hub.docker.com/_/postgres/)
+
+( Containerize Django and DB )
 
 ## OBLIGATIONS
 
