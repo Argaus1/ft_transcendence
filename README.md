@@ -1,16 +1,18 @@
 # ft_transcendence
 
+Make a fullstack website to play Pong (Youpi...)
+
 ## STACK
 
-- FRONTEND : Vanilla JS
-- CSS library : Bootstrap toolkit
-- BACKEND : Django (Python)
+- FRONTEND : Vanilla JS [Documentation](https://www.w3schools.com/js/DEFAULT.asp)
+- CSS library : Bootstrap toolkit [Documentation](https://getbootstrap.com/)
+- BACKEND : Django (Python) [Documentation](https://docs.djangoproject.com/en/5.1/)
 
 ## OBLIGATIONS
 
-- SPA (single-page-application)
+- SPA (single-page-application) 
 - Compatible with ***Google Chrome***
-- Everything must be launched with a single command line (Docker)
+- Everything must be launched with a single command line (Docker, like in *Inception*)
 
 ## GAME
 
