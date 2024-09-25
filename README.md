@@ -1,25 +1,29 @@
-# ft_transcendence
+# 🏓 Ft_transcendence
 
 Make a fullstack website to play Pong (Youpi...)
 
+
 ## STACK (JBDS)
 
-> JBDS stack is so popular right ??
+> JBDS stack is popular right ??
+
+<img width="300" height="300" src="https://media1.tenor.com/m/phyvUEXrZAUAAAAC/the-cat-in-the-hat-uh-no.gif"></img>
 
 - FRONTEND : Vanilla JS [Documentation](https://www.w3schools.com/js/DEFAULT.asp)
 - CSS library : Bootstrap toolkit [Documentation](https://getbootstrap.com/)
 - BACKEND : Django (Python) [Documentation](https://docs.djangoproject.com/en/5.1/)
 - DB : PostgreSQL [Documentation](https://www.postgresql.org/docs/current/) [Container](https://hub.docker.com/_/postgres/)
 
-( Containerize Django and DB )
+( Containerize Django and DB ) *multiple for django if microservices*
 
-## OBLIGATIONS
+## 🗃️ OBLIGATIONS
 
 - SPA (single-page-application) 
 - Compatible with ***Google Chrome***
 - Everything must be launched with a single command line (Docker, like in *Inception*)
+- Responsive ??
 
-## GAME
+## 🕹️ GAME
 
 The primary objective of this website is to facilitate Pong gameplay between users. Here are the key features:
 
@@ -35,7 +39,7 @@ The primary objective of this website is to facilitate Pong gameplay between use
 
 - **Game Development**: The game must be developed in accordance with the default frontend constraints (as outlined above). Alternatively, the FrontEnd module can be used, or it can be overridden with the Graphics module. Regardless of the visual aesthetics, the game must retain the essence of the original Pong (1972).
 
-## SECURITY
+## 🔐 SECURITY
 
 1. **Password Hashing**: If your database stores passwords, ensure they are hashed.
 2. **Protection Against Attacks**: Your website should be safeguarded against SQL injections and XSS.
@@ -43,7 +47,7 @@ The primary objective of this website is to facilitate Pong gameplay between use
 4. **Input Validation**: Implement a validation system for forms and user input. This can be done on the base page if there's no backend, or server-side if a backend is present.
 5. **Website Security**: Prioritizing your website's security is crucial, whether or not you choose to implement the JWT Security module with 2FA. For example, if you decide to develop an API, make sure your routes are secure. Even if you choose not to use JWT tokens, the security of your site remains paramount.
 
-## Modules
+## 🔍 Modules
 
 To achieve 100% completion, you need to complete 7 major modules.
 
