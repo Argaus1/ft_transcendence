@@ -2,6 +2,10 @@
 
 all: banner up
 
+up:
+	@echo "Starting the project"
+	-docker compose -f docker-compose.yml up -d
+
 down:
 	@echo "Stopping the project"
 	-docker compose -f docker-compose.yml down
@@ -28,6 +32,9 @@ setup:
 	-bash ./scripts/env.sh
 
 rebuild: reset all
+
+sujet:
+	@xdg-open https://cdn.intra.42.fr/pdf/pdf/133398/en.subject.pdf </dev/null >/dev/null 2>&1
 
 banner:
 	@echo "\033[1;32m _____                                        _                     \033[0m"
