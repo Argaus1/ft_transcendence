@@ -66,6 +66,10 @@ To achieve 100% completion, you need to complete 7 major modules.
 
 ## 🗂️ Database
 
+> [!IMPORTANT]  
+> This might change during the project to add useful fields in the database. <br>
+> And i don't know if linking multiple db together via a field make sense :(
+
 <details>
 <summary>DB model</summary>
   
@@ -109,7 +113,8 @@ ALTER TABLE users ADD CONSTRAINT users_id_fk FOREIGN KEY (id) REFERENCES idk (id
 
 <details>
   <summary>Diagram</summary>
-  
+
+  <img src="https://cdn.discordapp.com/attachments/327077237184659457/1289189724866482287/DB_transcendence.png?ex=66f7eafe&is=66f6997e&hm=ff034f374398383059ac7a380b79071b09d177edfdda80d02fe427f62571f097&"></img>
   
 </details>
 
