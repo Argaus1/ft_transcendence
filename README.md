@@ -60,3 +60,57 @@ To achieve 100% completion, you need to complete 7 major modules.
 
 - Each minor module completed will earn you an additional five points.
 - Each major module completed will earn you an additional ten points.
+- 
+
+<hr>
+
+## Database
+<details>
+<summary>DB model</summary>
+  
+```sql
+CREATE SEQUENCE IF NOT EXISTS idk_id_seq;
+
+CREATE TABLE IF NOT EXISTS idk (
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('idk_id_seq'),
+  login char,
+  email char,
+  password char,
+  profile_picture char,
+  game_id bigint
+);
+
+CREATE TABLE IF NOT EXISTS "Other game" (
+  game_id bigint NOT NULL PRIMARY KEY,
+  victory_count bigint,
+  lose_count bigint,
+  played_count bigint
+);
+
+CREATE TABLE IF NOT EXISTS Pong (
+  game_id bigint NOT NULL PRIMARY KEY,
+  victory_count bigint,
+  lose_count bigint,
+  played_count bigint
+);
+
+CREATE TABLE IF NOT EXISTS users (
+  id bigint NOT NULL PRIMARY KEY,
+  login char
+);
+
+ALTER TABLE idk ADD CONSTRAINT idk_game_id_fk FOREIGN KEY (game_id) REFERENCES Pong (game_id);
+ALTER TABLE idk ADD CONSTRAINT idk_game_id_fk_other FOREIGN KEY (game_id) REFERENCES "Other game" (game_id);
+ALTER TABLE users ADD CONSTRAINT users_id_fk FOREIGN KEY (id) REFERENCES idk (id);
+```
+
+</details>
+
+
+
+
+
+
+
+
+
