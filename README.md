@@ -64,7 +64,8 @@ To achieve 100% completion, you need to complete 7 major modules.
 
 <hr>
 
-## Database
+## 🗂️ Database
+
 <details>
 <summary>DB model</summary>
   
@@ -104,6 +105,12 @@ ALTER TABLE idk ADD CONSTRAINT idk_game_id_fk_other FOREIGN KEY (game_id) REFERE
 ALTER TABLE users ADD CONSTRAINT users_id_fk FOREIGN KEY (id) REFERENCES idk (id);
 ```
 
+</details>
+
+<details>
+  <summary>Diagram</summary>
+  
+  
 </details>
 
 
