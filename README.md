@@ -4,7 +4,11 @@ Make a fullstack website to play Pong (Youpi...)
 
 [Subject](https://cdn.intra.42.fr/pdf/pdf/133398/en.subject.pdf)
 
+## LAUNCH
 
+```bash
+make game # to launch the game and access it
+```
 
 ## STACK (JBDS)
 
@@ -21,7 +25,7 @@ Make a fullstack website to play Pong (Youpi...)
 
 ## 🗃️ OBLIGATIONS
 
-- SPA (single-page-application) 
+- SPA (single-page-application)
 - Compatible with ***Google Chrome***
 - Everything must be launched with a single command line (Docker, like in *Inception*)
 - Responsive ??
@@ -60,19 +64,19 @@ To achieve 100% completion, you need to complete 7 major modules.
 
 - Each minor module completed will earn you an additional five points.
 - Each major module completed will earn you an additional ten points.
-- 
+-
 
 <hr>
 
 ## 🗂️ Database
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > This might change during the project to add useful fields in the database. <br>
 > And i don't know if linking multiple db together via a field make sense :(
 
 <details>
 <summary>DB model</summary>
-  
+
 ```sql
 CREATE SEQUENCE IF NOT EXISTS idk_id_seq;
 
@@ -115,14 +119,5 @@ ALTER TABLE users ADD CONSTRAINT users_id_fk FOREIGN KEY (id) REFERENCES idk (id
   <summary>Diagram</summary>
 
   <img src="https://cdn.discordapp.com/attachments/327077237184659457/1289189724866482287/DB_transcendence.png?ex=66f7eafe&is=66f6997e&hm=ff034f374398383059ac7a380b79071b09d177edfdda80d02fe427f62571f097&"></img>
-  
+
 </details>
-
-
-
-
-
-
-
-
-
