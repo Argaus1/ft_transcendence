@@ -2,6 +2,10 @@
 
 all: banner up
 
+game:
+	@echo "Starting the game"
+	nix-shell setup_scripts/shell/game.nix
+
 up:
 	@echo "Starting the project"
 	-docker compose -f docker-compose.yml up -d
@@ -13,6 +17,7 @@ down:
 stop:
 	@echo "Down the project"
 	-docker compose -f docker-compose.yml stop
+
 
 reset: down
 	-docker volume rm #need to add all volumes
@@ -30,6 +35,7 @@ setup:
 	@echo "Setting up the project"
 	-bash ./scripts/packages.sh
 	-bash ./scripts/env.sh
+
 
 rebuild: reset all
 

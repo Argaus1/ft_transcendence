@@ -12,6 +12,8 @@ stdenv.mkDerivation {
     ];
     shellHook = ''
         export PATH="$PWD/node_modules/.bin/:$PATH"
-        alias run='npm run'
+        alias run='npm start'
+        xdg-open http://localhost:8080 1> /dev/null 2>&1
+        cd $PWD/dev_game && npm install && run
     '';
 }
