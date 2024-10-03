@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- link to design inspiration : https://dribbble.com/shots/7159520-Gameshelf-Profile-Library -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,39 +21,27 @@
                 <a class="nav-link active" href="#">Leaderboard</a>
             </li>
         </ul>
-        <ul class="navbar-nav d-flex flex-row gap-3">
+        <ul class="navbar-nav d-flex flex-row gap-3 align-items-center">
           <li class="nav-item">
-              <a class="nav-link active" href="#">
+            <a class="nav-link active" href="#">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
               </svg>
-              </a>
+            </a>
           </li>
-          <li class="nav-item">
-              <a class="nav-brand" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <img alt="Logo" width="40" height="40" class="d-inline-block align-text-top rounded-circle" style="object-fit: cover; border-color: $blue-600; border-width: 2px; border-style: solid;"
+          <li class="nav-item dropdown">
+            <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img alt="Logo" width="40" height="40" class="rounded-circle"
+                style="object-fit: cover; border-color: #0d6efd; border-width: 2px; border-style: solid; vertical-align: middle;"
                 src="https://cdn.intra.42.fr/users/65ca7a946948378f5cf99fb253ea4907/bapasqui.jpg" alt="profile_picture">
-              </a>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" style="position: absolute; right: 0;">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+            </ul>
           </li>
         </ul>
-      </div>
     </nav>
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Account</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="list-group dark">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="#">Profile</a>
-            </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="#" >Profile</a>
-          </li>
-      </div>
-    </div>
-    </div>
     <div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
         <iframe src="https://freepong.org/" width="800" height="600" style="border:none;"></iframe>
     </div>
