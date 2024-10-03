@@ -4,7 +4,14 @@ all: banner up
 
 game:
 	@echo "Starting the game"
-	nix-shell setup_scripts/shell/game.nix
+	@if command -v nix-shell > /dev/null; then \
+		nix-shell setup_scripts/shell/game.nix; \
+	else \
+	   echo "\033[1;31mnix-shell command does not exist\033[0m"; \
+	   echo "Launching the game locally then..."; \
+	   xdg-open http://localhost:8080 1> /dev/null 2>&1; \
+	   cd dev_game && npm install && npm start; \
+	fi
 
 up:
 	@echo "Starting the project"
