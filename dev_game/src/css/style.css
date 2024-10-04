@@ -1,15 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jersey+25&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-h1#game_name{
+h1#game_name {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
-a.nav-link{
+h1#game_name2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.8em;
+}
+
+a.nav-link {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
@@ -19,5 +27,13 @@ a.nav-link{
 
 body {
     font-family: "Montserrat", sans-serif;
-    overflow: hidden;
+    /* overflow: hidden; */
+}
+
+#game_canvas {
+    display: none !important;
+}
+
+#back_button {
+    display: none;
 }
