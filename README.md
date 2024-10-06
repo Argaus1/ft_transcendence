@@ -3,11 +3,20 @@
 Make a fullstack website to play Pong (Youpi...)
 
 [Subject](https://cdn.intra.42.fr/pdf/pdf/133398/en.subject.pdf)
+```bash
+make sujet # to open the subject
+```
 
-## LAUNCH
+## COMMANDS
 
+Launch the game :
 ```bash
 make game # to launch the game and access it
+```
+
+Launch the backend:
+```bash
+make backend # to launch the backend
 ```
 
 ## STACK (JBDS)
@@ -64,7 +73,26 @@ To achieve 100% completion, you need to complete 7 major modules.
 
 - Each minor module completed will earn you an additional five points.
 - Each major module completed will earn you an additional ten points.
--
+
+
+### List of modules
+
+- [ ] Major : Django backend / 1
+- [ ] Major : Multiplayer / 2
+- [ ] Major : AI Opponent / 3
+- [ ] Major : Remote authentification / 4 (OAuth 2.0 authentication with 42)
+- [ ] Major : Add Another Game with User History and Matchmaking. / 5
+- [ ] Major : Implement WAF/ModSecurity with Hardened Configuration and HashiCorp Vault for Secrets Management. / 6
+- [ ] Minor : Multiple language supports. / 6.5
+- [ ] Minor : GDPR Compliance Options with User Anonymization, Local Data Management, and Account Deletion. / 7
+- [ ] Major : Infrastructure Setup with ELK (Elasticsearch, Logstash, Kibana) for Log Management. / 8
+- [ ] Minor : User and Game Stats Dashboards / 8.5
+- [ ] Major : Live Chat / 9.5
+
+**A voir :**
+- [ ] Major : Store the score of a tournament in the Blockchain.
+- [ ] Minor : Use a database for the backend -and more.
+
 
 <hr>
 
