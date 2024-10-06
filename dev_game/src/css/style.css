@@ -30,9 +30,9 @@ body {
     /* overflow: hidden; */
 }
 
-/* #game_canvas {
+#game_canvas {
     display: none !important;
-} */
+}
 
 #back_button {
     display: none;
