@@ -19,6 +19,7 @@ stdenv.mkDerivation {
     YELLOW='\033[1;33m'
     NC="$(printf '\033[0m')"
     APP_NAME="app"
+    PORT=9090
 
     cd dev_backend
     echo -e "''${YELLOW}Creating python environment...''${NC}"
@@ -34,7 +35,7 @@ stdenv.mkDerivation {
         django-admin startproject $APP_NAME .
     fi
     python manage.py migrate
-    xdg-open http://localhost:9090 1> /dev/null 2>&1
-    python manage.py runserver 9090
+    xdg-open http://localhost:$PORT 1> /dev/null 2>&1
+    python manage.py runserver $PORT
   '';
 }
