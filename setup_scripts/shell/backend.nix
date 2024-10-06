@@ -18,6 +18,7 @@ stdenv.mkDerivation {
     SOURCE_DATE_EPOCH=$(date +%s)  # so that we can use python wheels
     YELLOW='\033[1;33m'
     NC="$(printf '\033[0m')"
+    APP_NAME="app"
 
     cd dev_backend
     echo -e "''${YELLOW}Creating python environment...''${NC}"
@@ -28,9 +29,9 @@ stdenv.mkDerivation {
     python -m pip install Django
 
     echo -e "''${YELLOW}Running Django server...''${NC}"
-    if [ ! -d app ]; then
+    if [ ! -d $APP_NAME ]; then
         echo -e "''${YELLOW}Creating Django app...''${NC}"
-        django-admin startproject app .
+        django-admin startproject $APP_NAME .
     fi
     python manage.py migrate
     xdg-open http://localhost:9090 1> /dev/null 2>&1
