@@ -3,20 +3,19 @@
 Make a fullstack website to play Pong (Youpi...)
 
 [Subject](https://cdn.intra.42.fr/pdf/pdf/133398/en.subject.pdf)
-```bash
-make sujet # to open the subject
-```
 
 ## COMMANDS
 
-Launch the game :
 ```bash
 make game # to launch the game and access it
 ```
 
-Launch the backend:
 ```bash
 make backend # to launch the backend
+```
+
+```bash
+make sujet # to open the subject
 ```
 
 ## STACK (JBDS)
