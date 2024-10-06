@@ -30,9 +30,9 @@ body {
     /* overflow: hidden; */
 }
 
-#game_canvas {
+/* #game_canvas {
     display: none !important;
-}
+} */
 
 #back_button {
     display: none;
@@ -45,4 +45,21 @@ body {
     /* #main:nth-child(2) {
         padding-left: 70px;
     } */
+}
+
+.bg-custom {
+    background-color: #16171c;
+}
+
+.color-custom {
+    color: #9579cd;
+}
+
+.btn-gradient {
+    background: linear-gradient(
+        90deg,
+        rgba(80, 112, 205, 1) 0%,
+        rgba(136, 112, 209, 1) 50%,
+        rgba(200, 117, 218, 1) 100%;
+    );
 }
