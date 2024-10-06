@@ -17,6 +17,17 @@ h1#game_name2 {
     font-size: 1.8em;
 }
 
+/* #logo:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(80, 112, 205, 1) 0%,
+        rgba(136, 112, 209, 1) 50%,
+        rgba(200, 117, 218, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
+
 a.nav-link {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
