@@ -37,3 +37,12 @@ body {
 #back_button {
     display: none;
 }
+
+@media (max-width: 768px) {
+    h1#game_name {
+        font-size: 1.5em;
+    }
+    /* #main:nth-child(2) {
+        padding-left: 70px;
+    } */
+}
