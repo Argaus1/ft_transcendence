@@ -8,13 +8,7 @@ Make a fullstack website to play Pong (Youpi...)
 
 ```bash
 make game # to launch the game and access it
-```
-
-```bash
 make backend # to launch the backend
-```
-
-```bash
 make sujet # to open the subject
 ```
 
