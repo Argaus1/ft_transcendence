@@ -6,7 +6,7 @@ h1#game_name {
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 
 h1#game_name2 {
@@ -40,7 +40,7 @@ body {
 
 @media (max-width: 768px) {
     h1#game_name {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
     /* #main:nth-child(2) {
         padding-left: 70px;
