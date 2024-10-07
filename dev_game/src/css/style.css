@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Jersey+25&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 h1#game_name {
     font-family: "Montserrat", sans-serif;
@@ -17,6 +18,14 @@ h1#game_name2 {
     font-size: 1.8em;
 }
 
+
+.montserrat-bold {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.0em;
+}
 /* #logo:hover {
     background: linear-gradient(
         90deg,
@@ -41,7 +50,7 @@ body {
     overflow: hidden;
 }
 
-#game_canvas {
+#game_screen {
     display: none !important;
 }
 
@@ -77,4 +86,46 @@ body {
 
 #main {
     height: 85vh;
+}
+
+#login-screen {
+    display: none !important;
+}
+
+.blob {
+  position: absolute;
+  opacity: 0.5;
+  width: 300px;
+  aspect-ratio: 1/1;
+  animation: animate 4s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
+    alternate forwards;
+  filter: blur(40px);
+  z-index: -1;
+  background: linear-gradient(
+      90deg,
+      rgba(80, 112, 205, 1) 0%,
+      rgba(136, 112, 209, 1) 50%,
+      rgba(200, 117, 218, 1) 100%;
+  );
+
+  box-shadow: inset 50px 50px 17px 0px #ff588b, inset 100px 100px 17px 0px #66319f;
+}
+
+@keyframes animate {
+  0% {
+    translate: 40% -25%;
+    border-radius: 60% 40% 30% 70% / 100% 85% 92% 74%;
+  }
+  50% {
+    translate: 0% 13%;
+    border-radius: 20% 71% 47% 70% / 81% 15% 22% 54%;
+    rotate: 41deg;
+    scale: 1.15;
+  }
+  100% {
+    translate: -45% 39%;
+    border-radius: 100% 75% 92% 74% / 60% 80% 30% 70%;
+    rotate: -60deg;
+    scale: 1.05;
+  }
 }
