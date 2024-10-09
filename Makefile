@@ -1,6 +1,6 @@
 ## NEED TO ADD SOME RULES FOR HELPING TO DEV
 
-all: banner up
+all: banner build
 
 game:
 	@echo "Starting the game"
@@ -23,6 +23,10 @@ backend:
 	   exit 1; \
 	fi
 
+
+build:
+	@echo "Building the project"
+	@docker compose -f docker-compose.yml up --build -d --remove-orphans
 
 up:
 	@echo "Starting the project"
