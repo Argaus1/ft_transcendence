@@ -49,6 +49,7 @@ reset: down
 	-docker image prune -f -a
 	-docker network prune -f
 	-docker builder prune --all
+	-rm -rf dev_backend/venv
 
 hard-reset: reset
 	-docker system prune --all --volumes -f
