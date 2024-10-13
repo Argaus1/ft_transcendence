@@ -7,6 +7,6 @@ router = DefaultRouter()
 router.register(r'items', ItemViewSet)
 
 urlpatterns = [
-	path('register/', TemplateView.as_view(template_name='register.html')),
+	path('register', TemplateView.as_view(template_name='register.html')),
     path('', index, name='index'),
 ]

@@ -1,7 +1,6 @@
 export class Router {
-	constructor(routes, notFoundPage) {
+	constructor(routes) {
 	  this.routes = routes;
-	  this.notFoundPage = notFoundPage;
   
 	  // Navigate to the initial path
 	  this.navigate();

@@ -1,12 +1,12 @@
 import { Router } from './src/router.js';
-import { HomePage, RegisterPage, NotFoundPage } from './src/pages.js';
+import { HomePage, RegisterPage } from './src/pages.js';
 
 const routes = {
   '/': HomePage,
   '/register': RegisterPage,
 };
 
-const router = new Router(routes, NotFoundPage);
+const router = new Router(routes);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.addEventListener('click', (e) => {
@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
       router.navigate();
     }
   });
+  
+	    // Add a specific event listener for the logo
+	const logo = document.querySelector('.navbar-brand[data-link]');
+	if (logo) {
+	  logo.addEventListener('click', (e) => {
+		e.preventDefault();
+		history.pushState(null, null, logo.getAttribute('data-link'));
+		router.navigate();
+	  });
+	}
 
   window.addEventListener('popstate', router.navigate.bind(router));
   router.navigate();
