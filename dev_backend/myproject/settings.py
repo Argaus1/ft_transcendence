@@ -136,4 +136,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    "/home/dboire/42/T/ft_transcendence/dev_backend/backend/static",
+]
