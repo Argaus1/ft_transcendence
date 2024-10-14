@@ -1,8 +1,7 @@
 from . import views
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import ItemViewSet, index
-from django.views.generic import TemplateView
+from .views import ItemViewSet, index, register
 
 router = DefaultRouter()
 router.register(r'items', ItemViewSet)
@@ -10,5 +9,6 @@ router.register(r'items', ItemViewSet)
 urlpatterns = [
     path('', views.index),  # Serve the SPA for the root
     path('register', views.index),  # Serve the SPA for register
+    path('api/register/', register, name='register'),
     # Add more routes here as necessary
 ]

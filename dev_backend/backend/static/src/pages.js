@@ -148,4 +148,47 @@ export class HomePage extends Page {
 		</div>
 	  `;
 	}
+	
+	render() {
+		super.render(); // Call the parent render method
+		this.attachFormListener(); // Now attach the listener here
+	  }
+	  
+	attachFormListener() {
+		const form = document.getElementById('register_form');
+		form.addEventListener('submit', async (e) => {
+		  e.preventDefault(); // Prevent the default form submission
+		  
+		  const email = document.getElementById('registerEmail').value;
+		  const password = document.getElementById('registerPassword').value;
+	
+		  // Prepare the data to send
+		  const data = { email, password };
+	
+		  try {
+			// Send data to the backend
+			const response = await fetch('/api/register/', {
+			  method: 'POST',
+			  headers: {
+				'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify(data),
+			});
+	
+			if (response.ok) {
+			  const result = await response.json();
+			  console.log('Registration successful:', result);
+			  // Optionally, redirect to login or home page
+			  // window.location.href = '/';
+			} else {
+			  const error = await response.json();
+			  console.error('Registration failed:', error);
+			  alert('Registration failed: ' + error.message);
+			}
+		  } catch (error) {
+			console.error('Error:', error);
+			alert('An error occurred: ' + error.message);
+		  }
+		});
+	  }
   }
