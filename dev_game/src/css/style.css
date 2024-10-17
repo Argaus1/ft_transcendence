@@ -58,6 +58,13 @@ body {
     display: none;
 }
 
+#game {
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: rgb(40, 41, 49);
+}
+
+
 @media (max-width: 768px) {
     h1#game_name {
         font-size: 1.3em;
@@ -129,5 +136,4 @@ body {
     scale: 1.05;
   }
 }
-
 
