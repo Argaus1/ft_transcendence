@@ -138,11 +138,23 @@
           </div>
         </div>
       </nav>
-        <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
-            <canvas id="game"></canvas>
+      <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
+        <div id="menu" class="d-flex flex-column align-items-center gap-2">
+            <h1 id="menu" class="display-1 montserrat-bold">PONG</h1>
+            <button id="start_button" class="btn btn-outline-light btn-lg">Play</button>
         </div>
+        <canvas id="game" style="display: none;"></canvas>
+    </div>
     </body>
     <script src="pong.js"></script>
+    <script>
+      document.getElementById("start_button").addEventListener("click", function () {
+        document.getElementById("game").style.display = "block";
+        document.getElementById("menu").style.display = "none";
+        document.getElementById("menu").style.setProperty("display", "none", "important");
+        game();
+      });
+    </script>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

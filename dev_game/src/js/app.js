@@ -1,7 +1,7 @@
 let play_button = document.getElementById("play_button");
 let back_button = document.getElementById("back_button");
-let game_screen = document.getElementById("game_screen");
 let login_button = document.getElementById("login_button");
+
 
 play_button.addEventListener("click", function () {
   document.getElementById("main").style.display = "none";
@@ -20,6 +20,11 @@ back_button.addEventListener("click", function () {
     canvas.style.setProperty("display", "none", "important");
   });
 });
+
+
+
+
+
 
 
 // login_button.addEventListener("click", function () {
