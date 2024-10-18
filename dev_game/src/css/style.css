@@ -64,6 +64,15 @@ body {
     background-color: rgb(40, 41, 49);
 }
 
+.full-width {
+    width: 100%;
+}
+
+#register_42:hover {
+    background: #00babc;
+    color: white;
+}
+
 
 @media (max-width: 768px) {
     h1#game_name {
