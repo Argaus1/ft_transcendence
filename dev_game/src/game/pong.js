@@ -1,6 +1,7 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 let raf;
+let gameRunning = true;
 
 const KEY_CODES = {
   37: { player: 'player2', change: -10 },
@@ -20,7 +21,7 @@ class Ball {
     this.vy = 1;
     this.radius = radius;
     this.color = color;
-    this.speed = 1.00000001;
+    this.speed = 3; // ball speed 
   }
 
   draw() {
@@ -106,7 +107,7 @@ function draw_table() {
   {
     ctx.beginPath();
     ctx.setLineDash([5, 15]);
-    ctx.font = "30px Montserrat";
+    ctx.font = "20px Montserrat";
     ctx.fillText(player1.score, 30, canvas.height / 2 - 20);
     ctx.fillText(player2.score, 30, canvas.height / 2 + 40);
 
@@ -156,18 +157,30 @@ function draw_ball() {
 
   if (player1.score == 5 || player2.score == 5)
     {
-      if (player1.score == 5)
-        alert(player1.name + " wins!");
-      else
-        alert(player2.name + " wins!");
-      player1.score = 0;
-      player2.score = 0;
+      if (document.getElementById("game").style.display != "none")
+      {
+        if (player1.score == 5)
+          alert(player1.name + " wins!");
+        else
+          alert(player2.name + " wins!");
+        player1.score = 0;
+        player2.score = 0;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        document.getElementById("game").style.display = "none";
+        document.getElementById("menu").style.display = "flex";
+        document.getElementById("menu").style.setProperty("display", "flex", "important");
+        document.getElementById("bob").style.display = "block";
+      }
+      // sleep with promise not working
+      //await new Promise(r => setTimeout(r, 1000));
+      // add replay button
     }
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ball.draw();
 
-  ball.x += ball.vx;
-  ball.y += ball.vy;
+  ball.x += ball.vx * ball.speed;
+  ball.y += ball.vy * ball.speed;
 
   if (
     ball.y + ball.vy > canvas.height - ball.radius ||
@@ -175,12 +188,12 @@ function draw_ball() {
   ) {
     if (canvas.width < 900)
     {
-      if (ball.y >= 800)
+      if (ball.y >= player2.y + 50)
       {
         player1.score++;
         reset(1);
       }
-      else if (ball.y <= 20)
+      else if (ball.y <= player1.y - 50)
       {
         player2.score++;
         reset(2);
@@ -195,12 +208,12 @@ function draw_ball() {
     ball.x + ball.vx < ball.radius
   ) {
     if (canvas.width > 900){
-      if (ball.y <= player2.y)
+      if (ball.y <= player2.y - 70)
       {
         player1.score++;
         reset(1);
       }
-      else if (ball.y >= player1.y)
+      else if (ball.y >= player1.y - 90)
       {
         player2.score++;
         reset(2);
@@ -341,7 +354,7 @@ function updatePlayerLayout() {
 function resizeCanvas() {
     const canvas = document.getElementById('game');
     canvas.width = window.innerWidth - 100;
-    canvas.height = window.innerHeight - 100;
+    canvas.height = window.innerHeight - 200;
     updatePlayerLayout();
     resetBallPosition();
 }
@@ -361,8 +374,8 @@ window.addEventListener('keyup', checkKeyUp, false);
 function game()
 {
   draw_ball();
-  draw_paddle();
   draw_table();
+  draw_paddle();
   move_players();
   //debug_print();
 }

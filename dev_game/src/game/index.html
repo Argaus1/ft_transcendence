@@ -16,7 +16,7 @@
     </head>
     <body class="p-3 mb-2 bg-custom text-white">
         <nav
-        class="navbar navbar-expand-lg bg-custom border-body"
+        class="navbar navbar-expand-lg border-body"
         data-bs-theme="dark"
       >
         <div class="container-fluid">
@@ -143,7 +143,7 @@
             <h1 id="menu" class="display-1 montserrat-bold">PONG</h1>
             <button id="start_button" class="btn btn-outline-light btn-lg">Play</button>
         </div>
-        <div class="blob"></div>
+        <div id="bob" class="blob"></div>
         <canvas id="game" style="display: none;"></canvas>
       </div>
     </body>
@@ -154,6 +154,7 @@
         document.getElementById("game").style.display = "block";
         document.getElementById("menu").style.display = "none";
         document.getElementById("menu").style.setProperty("display", "none", "important");
+        document.getElementById("bob").style.display = "none";
         game();
       });
     </script>

@@ -74,6 +74,12 @@ body {
     } */
 }
 
+@media (max-width: 480px) {
+    h1#game_name {
+        font-size: 0.9em;
+    }
+}
+
 .bg-custom {
     background-color: #16171c;
 }
