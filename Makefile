@@ -16,7 +16,7 @@ game:
 backend:
 	@echo "Starting the backend"
 	@if command -v nix-shell > /dev/null; then \
-		nix-shell setup_scripts/shell/backend.nix; \
+		nix-shell ./srcs/setup_scripts/shell/backend.nix; \
 	else \
 	   echo "\033[1;31mnix-shell command does not exist\033[0m"; \
 	   echo "Unable to launch the backend"; \
@@ -26,19 +26,19 @@ backend:
 
 build:
 	@echo "Building the project"
-	@docker compose -f docker-compose.yml up --build -d --remove-orphans
+	@docker compose -f ./srcs/docker-compose.yml up --build --remove-orphans
 
 up:
 	@echo "Starting the project"
-	-docker compose -f docker-compose.yml up -d
+	-docker compose -f ./srcs/docker-compose.yml up -d
 
 down:
 	@echo "Stopping the project"
-	-docker compose -f docker-compose.yml down
+	-docker compose -f ./srcs/docker-compose.yml down -v
 
 stop:
 	@echo "Down the project"
-	-docker compose -f docker-compose.yml stop
+	-docker compose -f ./srcs/docker-compose.yml stop
 
 
 reset: down
@@ -49,7 +49,6 @@ reset: down
 	-docker image prune -f -a
 	-docker network prune -f
 	-docker builder prune --all
-	-rm -rf dev_backend/venv
 
 hard-reset: reset
 	-docker system prune --all --volumes -f
