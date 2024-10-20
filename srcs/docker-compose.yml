@@ -1,0 +1,40 @@
+services:
+  database:
+    container_name: postgres
+    image: postgres:14
+    restart: always
+    env_file:
+      - ../env_test.txt
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    ports:
+      - "5432:5432"
+  django:
+    container_name: django
+    image: django:latest
+    build: ./requirements/django
+    volumes:
+      - ./requirements/django/dev_backend:/app
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - ../env_test.txt
+    command: >
+      sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  pgdata:
+    ## DJANGO BACKEND
+    ## NGINX
+    ## DEVOPS (GRAFANA, PROMETHEUS, PORTAINER)
