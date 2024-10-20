@@ -13,7 +13,7 @@ export class HomePage extends Page {
           <h1 id="game_name2" class="display-6 color-custom"></h1>
           <p class="lead">Fullstack Gaming Website</p>
           <div class="d-flex flex-column flex-md-row gap-3 justify-content-center" id="app"></div>
-		    <a id="play_button" type="button" class="btn btn-light fw-bold" data-link=register
+		    <a id="play_button" type="button" class="btn btn-light fw-bold" data-link=login
 				>Start Playing</a
 			  >
         </div>

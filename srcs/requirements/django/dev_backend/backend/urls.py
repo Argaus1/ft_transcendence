@@ -10,5 +10,8 @@ urlpatterns = [
     path('', views.index),  # Serve the SPA for the root
     path('register', views.index),  # Serve the SPA for register
     path('api/register/', register, name='register'),
+    path('login', views.index),
+    path('games', views.index),
+    path('pong', views.index),
     # Add more routes here as necessary
 ]
