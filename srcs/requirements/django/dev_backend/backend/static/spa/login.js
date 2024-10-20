@@ -1,6 +1,6 @@
 import { Page } from '../src/pages.js';
 
-export class RegisterPage extends Page {
+export class LoginPage extends Page {
 	constructor() {
 	  super();
 	  this.template = `
@@ -28,7 +28,7 @@ export class RegisterPage extends Page {
 			>
 			  Back
 			</button>
-			<h3 class="text-center text-light fw-bold">Register</h3>
+			<h3 class="text-center text-light fw-bold">Login</h3>
 			<div class="mb-3">
 			  <label for="registerEmail" class="form-label"
 				>Email address</label
@@ -39,9 +39,6 @@ export class RegisterPage extends Page {
 				id="registerEmail"
 				aria-describedby="emailHelp"
 			  />
-			  <div id="emailHelp" class="form-text text-white">
-				We'll never share your email with anyone else.
-			  </div>
 			</div>
 			<div class="mb-3">
 			  <label for="registerPassword" class="form-label">Password</label>
@@ -50,9 +47,6 @@ export class RegisterPage extends Page {
 				class="form-control text-bg-dark"
 				id="registerPassword"
 			  />
-			  <div id="passwordHelpBlock" class="form-text text-white">
-				Your password must be 8-20 characters long.
-			  </div>
 			</div>
 			<div class="mb-3 form-check">
 			  <input type="checkbox" class="form-check-input" id="stayConnected" />
@@ -60,14 +54,15 @@ export class RegisterPage extends Page {
 				>Stay Connected</label
 			  >
 			</div>
-			<div class="d-flex justify-content-between flex-column gap-2">
-                <a href="#" data-link=login class="text-white">Login</a>
+			<div class="d-flex justify-content-between">
+                <a href="#" class="text-white">Forgot password?</a>
+                <a href="#" data-link=register class="text-white">Create an account</a>
             </div>
              <div class="d-flex justify-content-between flex-column gap-2">
                 <button id="register_button" 
                 type="submit" 
                 class="btn btn-outline-light full-width"
-                >Register</button>
+                >Login</button>
 	            <button id="register_42"
 	            type="submit" 
 	            class="btn btn-outline-light full-width "
