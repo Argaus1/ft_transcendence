@@ -1,5 +1,8 @@
 import { Router } from './src/router.js';
-import { HomePage, RegisterPage, Games, Pong } from './src/pages.js';
+import { HomePage} from './spa/home.js';
+import { RegisterPage } from './spa/register.js';
+import { Games } from './spa/games.js';
+import { Pong } from './spa/pong.js';
 
 const routes = {
   '/': HomePage,
