@@ -5,13 +5,13 @@ export class LoginPage extends Page {
 	  super();
 	  this.template = `
 		<div
-		  id="register_container"
+		  id="login_container"
 		  class="d-flex justify-content-center align-items-center"
 		  style="height: 85vh"
 		>
 		  <div class="blob"></div>
 		  <form
-			id="register_form"
+			id="login_form"
 			class="p-4"
 			style="
 			  width: 400px;
@@ -30,22 +30,20 @@ export class LoginPage extends Page {
 			</button>
 			<h3 class="text-center text-light fw-bold">Login</h3>
 			<div class="mb-3">
-			  <label for="registerEmail" class="form-label"
-				>Email address</label
-			  >
+			  <label for="loginEmail" class="form-label">Email address</label>
 			  <input
 				type="email"
 				class="form-control text-bg-dark"
-				id="registerEmail"
+				id="loginEmail"
 				aria-describedby="emailHelp"
 			  />
 			</div>
 			<div class="mb-3">
-			  <label for="registerPassword" class="form-label">Password</label>
+			  <label for="loginPassword" class="form-label">Password</label>
 			  <input
 				type="password"
 				class="form-control text-bg-dark"
-				id="registerPassword"
+				id="loginPassword"
 			  />
 			</div>
 			<div class="mb-3 form-check">
@@ -59,11 +57,11 @@ export class LoginPage extends Page {
                 <a href="#" data-link=register class="text-white">Create an account</a>
             </div>
              <div class="d-flex justify-content-between flex-column gap-2">
-                <button id="register_button" 
+                <button id="login_button" 
                 type="submit" 
                 class="btn btn-outline-light full-width"
                 >Login</button>
-	            <button id="register_42"
+	            <button id="login_42"
 	            type="submit" 
 	            class="btn btn-outline-light full-width "
 	            >Login with 42</button>
@@ -73,25 +71,26 @@ export class LoginPage extends Page {
 	  `;
 	}
 	
-	render() {
+	render()
+	{
 		super.render(); // Call the parent render method
-		this.attachFormListener(); // Now attach the listener here
-	  }
-	  
-	attachFormListener() {
-		const form = document.getElementById('register_form');
+		this.attachFormLoginListener(); // Now attach the listener here
+	}
+	
+	attachFormLoginListener() {
+		const form = document.getElementById('login_form');
 		form.addEventListener('submit', async (e) => {
 		  e.preventDefault(); // Prevent the default form submission
 		  
-		  const email = document.getElementById('registerEmail').value;
-		  const password = document.getElementById('registerPassword').value;
+		  const email = document.getElementById('loginEmail').value;
+		  const password = document.getElementById('loginPassword').value;
 	
 		  // Prepare the data to send
 		  const data = { email, password };
 	
 		  try {
 			// Send data to the backend
-			const response = await fetch('/api/register/', {
+			const response = await fetch('/api/login/', {
 			  method: 'POST',
 			  headers: {
 				'Content-Type': 'application/json',
@@ -101,13 +100,13 @@ export class LoginPage extends Page {
 	
 			if (response.ok) {
 			  const result = await response.json();
-			  console.log('Registration successful:', result);
-			  // Optionally, redirect to login or home page
+			  console.log('Login successful:', result);
+			  // Optionally, redirect to home page or another page
 			  // window.location.href = '/';
 			} else {
 			  const error = await response.json();
-			  console.error('Registration failed:', error);
-			  alert('Registration failed: ' + error.message);
+			  console.error('Login failed:', error);
+			  alert('Login failed: ' + error.message);
 			}
 		  } catch (error) {
 			console.error('Error:', error);
@@ -115,4 +114,4 @@ export class LoginPage extends Page {
 		  }
 		});
 	  }
-  }
+}

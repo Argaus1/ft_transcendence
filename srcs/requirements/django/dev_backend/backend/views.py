@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from .models import Item
 from .serializers import ItemSerializer
 from django.contrib.auth.models import User  # Import User model
+from django.contrib.auth import authenticate
 import json, logging
 
 class ItemViewSet(viewsets.ModelViewSet):
@@ -39,3 +40,20 @@ def register(request):
             return JsonResponse({'error': str(e)}, status=400)
 
     return JsonResponse({'error': 'Invalid method'}, status=405)
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        email = data.get('email')
+        password = data.get('password')
+        
+        # Assuming you are using Django's default User model
+        user = authenticate(request, username=email, password=password)
+        
+        if user is not None:
+            return JsonResponse({"status": "success", "message": "Login successful"})
+        else:
+            return JsonResponse({"status": "error", "message": "Invalid email or password"})
+    
+    return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)

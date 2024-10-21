@@ -30,7 +30,7 @@ export class RegisterPage extends Page {
 			</button>
 			<h3 class="text-center text-light fw-bold">Register</h3>
 			<div class="mb-3">
-			  <label for="registerEmail" class="form-label"
+			  <label for="registeremail" class="form-label"
 				>Email address</label
 			  >
 			  <input
@@ -44,7 +44,7 @@ export class RegisterPage extends Page {
 			  </div>
 			</div>
 			<div class="mb-3">
-			  <label for="registerPassword" class="form-label">Password</label>
+			  <label for="registerpassword" class="form-label">Password</label>
 			  <input
 				type="password"
 				class="form-control text-bg-dark"
@@ -60,7 +60,7 @@ export class RegisterPage extends Page {
 				>Stay Connected</label
 			  >
 			</div>
-			<div class="d-flex justify-content-between flex-column gap-2">
+			<div class="d-flex justify-content-center align-items-center">
                 <a href="#" data-link=login class="text-white">Login</a>
             </div>
              <div class="d-flex justify-content-between flex-column gap-2">
@@ -80,10 +80,10 @@ export class RegisterPage extends Page {
 	
 	render() {
 		super.render(); // Call the parent render method
-		this.attachFormListener(); // Now attach the listener here
+		this.attachFormRegisterListener(); // Now attach the listener here
 	  }
 	  
-	attachFormListener() {
+	  attachFormRegisterListener() {
 		const form = document.getElementById('register_form');
 		form.addEventListener('submit', async (e) => {
 		  e.preventDefault(); // Prevent the default form submission
