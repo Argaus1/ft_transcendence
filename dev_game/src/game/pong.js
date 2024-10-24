@@ -1,7 +1,7 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
-let raf;
 let gameRunning = true;
+let animationFrameId;
 
 const KEY_CODES = {
   37: { player: 'player2', change: -10 },
@@ -10,7 +10,6 @@ const KEY_CODES = {
   68: { player: 'player1', change: 10 },
 };
 let keys = {};
-//let nm = window.prompt("What's your name?");
 
 // CLASS PART
 class Ball {
@@ -40,10 +39,12 @@ class Ball {
     else
       this.color = color;
   }
-
-  reset()
-  {
-    delete [];
+  reset() {
+    this.x = canvas.width / 2;
+    this.y = canvas.height / 2;
+    this.vx = 2;
+    this.vy = 1;
+    this.speed = 4;
   }
 }
 
@@ -69,12 +70,21 @@ class Paddle {
   {
     this.x = this.initialX;
     this.y = this.initialY;
-    this.vx = 5;
-    this.vy = 2;
     this.color = "white";
     this.speed = 1.00000001;
   }
 }
+
+class Tournament {
+  constructor(player1, player2, player3, player4) {
+    this.player1 = player1;
+    this.player2 = player2;
+    this.player3 = player3;
+    this.player4 = player4;
+    this.score = 0;
+  }
+}
+
 
 // CREATE INSTANCE
 ball = new Ball(canvas.width / 2, canvas.height / 2, 10, "white");
@@ -82,11 +92,17 @@ ball = new Ball(canvas.width / 2, canvas.height / 2, 10, "white");
 // horyzontal
 player1 = new Paddle(canvas.width / 2 - 70 / 2, 30, "white", "bapasqui");
 player2 = new Paddle(canvas.width / 2 - 70 / 2, canvas.height - 10 - 30, "white", "dboire");
-resizeCanvas();
+
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
 
 // FUNCTIONS
 function debug_print()
 {
+  if (!gameRunning) return;
   let i = 20;
   ctx.font = "10px Arial";
   ctx.fillText("Ball X : " + ball.x, i, 40);
@@ -96,10 +112,11 @@ function debug_print()
   ctx.fillText("width : " + canvas.width, i, 120);
   ctx.fillText("height : " + canvas.height, i, 140);
   ctx.fillText("speed : " + ball.speed, i, 160);
-  raf = window.requestAnimationFrame(debug_print);  
+  animationFrameId = window.requestAnimationFrame(debug_print);  
 }
 
 function draw_table() {
+  if (!gameRunning) return;
   // RESPONSIVE PART
   ctx.strokeStyle = "grey";
   ctx.lineWidth = 2;
@@ -135,7 +152,7 @@ function draw_table() {
     ctx.lineTo(canvas.width / 2, canvas.height);
     ctx.stroke();
   }
-  raf = window.requestAnimationFrame(draw_table);
+  animationFrameId = window.requestAnimationFrame(draw_table);
 }
 
 function circleRectCollision(circleX, circleY, circleRadius, rectX, rectY, rectWidth, rectHeight) {
@@ -155,7 +172,8 @@ function circleRectCollision(circleX, circleY, circleRadius, rectX, rectY, rectW
 
 
 function draw_ball() {
-
+  if (!gameRunning) return;
+  clearCanvas();
   if (player1.score == 5 || player2.score == 5)
     {
       if (document.getElementById("game").style.display != "none")
@@ -166,8 +184,7 @@ function draw_ball() {
           alert(player2.name + " wins!");
         player1.score = 0;
         player2.score = 0;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+        stopGame();
         document.getElementById("game").style.display = "none";
         document.getElementById("menu").style.display = "flex";
         document.getElementById("menu").style.setProperty("display", "flex", "important");
@@ -177,7 +194,6 @@ function draw_ball() {
       //await new Promise(r => setTimeout(r, 1000));
       // add replay button
     }
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ball.draw();
 
   ball.x += ball.vx * ball.speed;
@@ -239,7 +255,7 @@ function draw_ball() {
       if (circleRectCollision(ball.x, ball.y, ball.radius, player2.x, player2.y, 10, 70))
         ball.vx = -ball.vx;
     }
-  raf = window.requestAnimationFrame(draw_ball);
+    animationFrameId = window.requestAnimationFrame(draw_ball);
 }
 
 // Dont do that just for fun and later learning
@@ -263,37 +279,44 @@ function animatePaddle(paddle) {
 
 function draw_paddle()
 {
+  if (!gameRunning) return;
   player1.draw();
   player2.draw();
-  raf = window.requestAnimationFrame(draw_paddle);
+  animationFrameId = window.requestAnimationFrame(draw_paddle);
 }
 
+function getConeDirection(player_win) {
+  const angleRange = Math.PI / 3; // 60 degrees cone
+  const baseAngle = player_win == 1 ? -Math.PI / 2 : Math.PI / 2; // -PI/2 for up, PI/2 for down
+  const randomAngle = baseAngle + (Math.random() * angleRange - angleRange / 2);
+  const speed = 2;
+  return {
+    vx: speed * Math.cos(randomAngle),
+    vy: speed * Math.sin(randomAngle)
+  };
+}
 
-function reset(player_win)
-{
+function reset(player_win) {
   ball = new Ball(canvas.width / 2, canvas.height / 2, 10, "white");
-  if (canvas.width < 900)
-  {
+  const direction = getConeDirection(player_win);
+
+  if (canvas.width < 900) {
     if (player_win == 2) {
-      ball.vx = -2;
-      ball.vy = 1;
+      ball.vx = -direction.vx;
+      ball.vy = direction.vy;
+    } else if (player_win == 1) {
+      ball.vx = direction.vx;
+      ball.vy = -direction.vy;
     }
-    else if (player_win == 1) {
-      ball.vx = 2;
-      ball.vy = -1;
-    }
-  } else if (canvas.width > 900)
-  {
+  } else if (canvas.width > 900) {
     if (player_win == 1) {
-      ball.vx = -2;
-      ball.vy = 1;
-    }
-    else if (player_win == 2) {
-      ball.vx = 2;
-      ball.vy = -1;
+      ball.vx = -direction.vx;
+      ball.vy = direction.vy;
+    } else if (player_win == 2) {
+      ball.vx = direction.vx;
+      ball.vy = direction.vy;
     }
   }
-
 }
 
 // MOVEMENTS
@@ -314,6 +337,7 @@ function checkKeyUp(e) {
   }
 }
 function move_players() {
+  if (!gameRunning) return;
   const speedFactor = 0.5;
 
   for (let key in keys) {
@@ -334,7 +358,7 @@ function move_players() {
       }
     }
   }
-  raf = window.requestAnimationFrame(move_players);
+  animationFrameId = window.requestAnimationFrame(move_players);
 }
 
 
@@ -400,7 +424,7 @@ function AI_mov_p2() {
       }
     }
   }
-  raf = window.requestAnimationFrame(AI_mov_p2);
+  animationFrameId = window.requestAnimationFrame(AI_mov_p2);
 }
 
 
@@ -441,7 +465,7 @@ function AI_mov_p1() {
       }
     }
   }
-  raf = window.requestAnimationFrame(AI_mov_p1);
+  animationFrameId = window.requestAnimationFrame(AI_mov_p1);
 }
 
 
@@ -463,16 +487,15 @@ function resetBallPosition() {
 
 function choose_gamemode(value)
 {
+    // need to check size of the name
   if (value == "pvp")
   {
-    // check size of the name
     player1.name = window.prompt("What's player 1 name?");
     player2.name = window.prompt("What's player 2 name?");
   }
   if (value == "vsa")
   {
     player2.name = "AI";
-    // check size of the name
     player1.name = window.prompt("What's your name?");
     AI_mov_p2();
 
@@ -484,22 +507,60 @@ function choose_gamemode(value)
     AI_mov_p2();
     AI_mov_p1();
   }
+  if (value == "tournament")
+  {
+    if (!document.getElementById('player1').value)
+      player1.name = "Player 1";
+    else
+      player1.name = document.getElementById('player1').value;
+    if (!document.getElementById('player2').value)
+      player2.name = "Player 2";
+    else
+      player2.name = document.getElementById('player2').value;
+    if (!document.getElementById('player3').value)
+      player3.name = "Player 3";  
+    else
+      player3.name = document.getElementById('player3').value;  
+    if (!document.getElementById('player4').value)
+      player4.name = "Player 4";  
+    else
+      player4.name = document.getElementById('player4').value;
+    
+    let tournament = new Tournament(player1, player2, player3, player4);
+    tournament.score = 0;
+  }
 }
 
-
-window.addEventListener('resize', resizeCanvas, false);
-window.addEventListener('keydown', checkKeyDown, false);
-window.addEventListener('keyup', checkKeyUp, false);
-
-
-
+function stopGame() {
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
+  gameRunning = false;
+}
 
 function game(value)
 {
-  draw_ball();
-  draw_table();
-  draw_paddle();
-  move_players();
-  choose_gamemode(value);
+  if (gameRunning)
+  {
+    draw_ball();
+    draw_table();
+    draw_paddle();
+    move_players();
+    choose_gamemode(value);
+  } else {
+    gameRunning = true;
+    draw_ball();
+    draw_table();
+    draw_paddle();
+    move_players();
+    choose_gamemode(value);
+  }
   //debug_print();
 }
+
+// EVENTS 
+window.addEventListener('resize', resizeCanvas, false);
+window.addEventListener('keydown', checkKeyDown, false);
+window.addEventListener('keyup', checkKeyUp, false);
+resizeCanvas();

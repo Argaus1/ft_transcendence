@@ -138,6 +138,8 @@
           </div>
         </div>
       </nav>
+      <!-- <button onclick="stopGame()">Stop Game</button>
+      <button onclick="runGame()">Start Game</button> -->
       <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
         <div id="menu" class="d-flex flex-column align-items-center gap-2">
             <h1 id="menu" class="display-1 montserrat-bold fw-bold">PONG</h1>
@@ -146,6 +148,14 @@
               <button id="start_button" value="pvp" class="btn btn-outline-light full-width btn-lg">1 vs 1</button>
               <button id="start_button2" value="vsa" class="btn btn-outline-light full-width btn-lg">1 vs AI</button>
               <button id="start_button3" value="ai" class="btn btn-outline-light full-width btn-lg">AI vs AI</button>
+              <button id="start_button4" value="tournament" class="btn btn-light full-width btn-lg">Tournament</button>
+              <article id="input_tournoi" class="d-flex flex-column gap-2">
+                <input id="player1" class="form-control" type="text" placeholder="Player 1">
+                <input id="player2" class="form-control" type="text" placeholder="Player 2">
+                <input id="player2" class="form-control" type="text" placeholder="Player 3">
+                <input id="player3" class="form-control" type="text" placeholder="Player 4">
+                <button id="send_tournament" value="tournament" class="btn btn-outline-success">Start Tournament</button>
+              </article> 
             </article>
         </div>
         <div id="bob" class="blob"></div>
@@ -154,29 +164,7 @@
     </body>
     <script src="pong.js"></script>
     <script src="../js/app.js"></script>
-    <script>
-      document.getElementById("start_button").addEventListener("click", function () {
-        document.getElementById("game").style.display = "block";
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("menu").style.setProperty("display", "none", "important");
-        document.getElementById("bob").style.display = "none";
-        game(start_button.value);
-      });
-      document.getElementById("start_button2").addEventListener("click", function () {
-        document.getElementById("game").style.display = "block";
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("menu").style.setProperty("display", "none", "important");
-        document.getElementById("bob").style.display = "none";
-        game(start_button2.value);
-      });
-      document.getElementById("start_button3").addEventListener("click", function () {
-        document.getElementById("game").style.display = "block";
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("menu").style.setProperty("display", "none", "important");
-        document.getElementById("bob").style.display = "none";
-        game(start_button3.value);
-      });
-    </script>
+    <script src="event.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
