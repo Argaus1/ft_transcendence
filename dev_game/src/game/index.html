@@ -140,26 +140,55 @@
       </nav>
       <!-- <button onclick="stopGame()">Stop Game</button>
       <button onclick="runGame()">Start Game</button> -->
-      <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
-        <div id="menu" class="d-flex flex-column align-items-center gap-2">
-            <h1 id="menu" class="display-1 montserrat-bold fw-bold">PONG</h1>
-            <article class="d-flex flex-column gap-2">
-              <h2 id="menu" class="display-6 montserrat-bold">Choose your game mode</h2>
-              <button id="start_button" value="pvp" class="btn btn-outline-light full-width btn-lg">1 vs 1</button>
-              <button id="start_button2" value="vsa" class="btn btn-outline-light full-width btn-lg">1 vs AI</button>
-              <button id="start_button3" value="ai" class="btn btn-outline-light full-width btn-lg">AI vs AI</button>
-              <button id="start_button4" value="tournament" class="btn btn-light full-width btn-lg">Tournament</button>
-              <article id="input_tournoi" class="d-flex flex-column gap-2">
-                <input id="player1" class="form-control" type="text" placeholder="Player 1">
-                <input id="player2" class="form-control" type="text" placeholder="Player 2">
-                <input id="player2" class="form-control" type="text" placeholder="Player 3">
-                <input id="player3" class="form-control" type="text" placeholder="Player 4">
-                <button id="send_tournament" value="tournament" class="btn btn-outline-success">Start Tournament</button>
-              </article> 
-            </article>
+      <div id="game_carrousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
+              <div id="menu" class="d-flex flex-column align-items-center gap-2">
+                  <h1 id="menu" class="display-1 montserrat-bold fw-bold">PONG</h1>
+                  <article class="d-flex flex-column gap-2">
+                    <h2 id="menu" class="display-6 montserrat-bold">Choose your game mode</h2>
+                    <button id="start_button" value="pvp" class="btn btn-outline-light full-width btn-lg">1 vs 1</button>
+                    <button id="start_button2" value="vsa" class="btn btn-outline-light full-width btn-lg">1 vs AI</button>
+                    <button id="start_button3" value="ai" class="btn btn-outline-light full-width btn-lg">AI vs AI</button>
+                    <button id="start_button4" value="tournament" class="btn btn-light full-width btn-lg">Tournament</button>
+                    <article id="input_tournoi" class="d-flex flex-column gap-2">
+                      <input id="player1" class="form-control" type="text" placeholder="Player 1">
+                      <input id="player2" class="form-control" type="text" placeholder="Player 2">
+                      <input id="player2" class="form-control" type="text" placeholder="Player 3">
+                      <input id="player3" class="form-control" type="text" placeholder="Player 4">
+                      <button id="send_tournament" value="tournament" class="btn btn-outline-success">Start Tournament</button>
+                    </article> 
+                  </article>
+              </div>
+              <div id="bob" class="blob"></div>
+              <canvas id="game" style="display: none;"></canvas>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
+              <div id="menu2" class="d-flex flex-column align-items-center gap-2">
+                <h1 id="menu2" class="display-1 montserrat-bold fw-bold">Guess The Login</h1>
+                <article class="d-flex flex-column gap-2">
+                  <h2 id="menu" class="display-6 montserrat-bold">Choose your promo</h2>
+                  <!-- <img src="https://cdn.intra.42.fr/users/408819b9ecc12459e847129d20a195df/small_dboire.jpg" alt="dboire" width="400" height="300"/> -->
+                  <button id="start_button_second" value="play" class="btn btn-outline-light full-width btn-lg" data-bs-toggle="button" aria-pressed="true">2022</button>
+                  <button id="start_button_second" value="play" class="btn btn-outline-light full-width btn-lg" data-bs-toggle="button" aria-pressed="true">2023</button>
+                  <button id="start_button_second" value="play" class="btn btn-outline-light full-width btn-lg" data-bs-toggle="button" aria-pressed="true">2024</button>
+                  <button id="start_button_second" value="play" class="btn btn-light full-width btn-lg">Play</button>
+                </article>
+              <div id="bob" class="blob"></div>
+            </div>
+          </div>
         </div>
-        <div id="bob" class="blob"></div>
-        <canvas id="game" style="display: none;"></canvas>
+        <button class="carousel-control-prev" type="button" data-bs-target="#game_carrousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#game_carrousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </body>
     <script src="pong.js"></script>

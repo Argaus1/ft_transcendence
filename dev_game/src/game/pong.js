@@ -77,11 +77,9 @@ class Paddle {
 
 class Tournament {
   constructor(player1, player2, player3, player4) {
-    this.player1 = player1;
-    this.player2 = player2;
-    this.player3 = player3;
-    this.player4 = player4;
+    this.players = [player1, player2, player3, player4];
     this.score = 0;
+    this.round = 0;
   }
 }
 
@@ -96,8 +94,6 @@ player2 = new Paddle(canvas.width / 2 - 70 / 2, canvas.height - 10 - 30, "white"
 function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
-
-
 
 // FUNCTIONS
 function debug_print()
@@ -498,7 +494,6 @@ function choose_gamemode(value)
     player2.name = "AI";
     player1.name = window.prompt("What's your name?");
     AI_mov_p2();
-
   }
   if (value == "ai")
   {
@@ -539,24 +534,39 @@ function stopGame() {
   gameRunning = false;
 }
 
-function game(value)
-{
-  if (gameRunning)
-  {
-    draw_ball();
-    draw_table();
-    draw_paddle();
-    move_players();
-    choose_gamemode(value);
-  } else {
-    gameRunning = true;
-    draw_ball();
-    draw_table();
-    draw_paddle();
-    move_players();
-    choose_gamemode(value);
-  }
-  //debug_print();
+
+function game(value) {
+  let count = 3;
+  clearCanvas();
+  gameRunning = false;
+  choose_gamemode(value);
+
+  const text = player1.name + " vs " + player2.name;
+  if (canvas.width < 900)
+    ctx.font = "20px Arial";
+  else
+    ctx.font = "40px Arial";
+  const textWidth = ctx.measureText(text).width;
+  ctx.fillStyle = "white";
+  ctx.fillText(text, (canvas.width - textWidth) / 2, 50);
+
+  let interval = setInterval(() => {
+    ctx.clearRect(canvas.width / 2 - 50, canvas.height / 2 - 100, 100, 150);
+    ctx.font = "50px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(count, canvas.width / 2 - 20, canvas.height / 2);
+    count--;
+    if (count < 0) {
+      clearInterval(interval);
+      gameRunning = true;
+      draw_ball();
+      draw_table();
+      draw_paddle();
+      draw_table();
+      draw_paddle();
+      move_players();
+    }
+  }, 600);
 }
 
 // EVENTS 
