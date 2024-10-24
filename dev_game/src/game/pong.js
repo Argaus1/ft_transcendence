@@ -1,4 +1,4 @@
-const canvas = document.getElementById("game");
+const canvas = document.getElementById("pong");
 const ctx = canvas.getContext("2d");
 let gameRunning = true;
 let animationFrameId;
@@ -172,7 +172,7 @@ function draw_ball() {
   clearCanvas();
   if (player1.score == 5 || player2.score == 5)
     {
-      if (document.getElementById("game").style.display != "none")
+      if (document.getElementById("pong").style.display != "none")
       {
         if (player1.score == 5)
           alert(player1.name + " wins!");
@@ -181,10 +181,12 @@ function draw_ball() {
         player1.score = 0;
         player2.score = 0;
         stopGame();
-        document.getElementById("game").style.display = "none";
+        document.getElementById("pong").style.display = "none";
         document.getElementById("menu").style.display = "flex";
         document.getElementById("menu").style.setProperty("display", "flex", "important");
         document.getElementById("bob").style.display = "block";
+        document.getElementById("test").style.display = "block";
+        document.getElementById("test2").style.display = "block";
       }
       // sleep with promise not working
       //await new Promise(r => setTimeout(r, 1000));
@@ -467,7 +469,7 @@ function AI_mov_p1() {
 
 
 function resizeCanvas() {
-    const canvas = document.getElementById('game');
+    const canvas = document.getElementById('pong');
     canvas.width = window.innerWidth - 100;
     canvas.height = window.innerHeight - 200;
     updatePlayerLayout();
@@ -566,7 +568,7 @@ function game(value) {
       draw_paddle();
       move_players();
     }
-  }, 600);
+  }, 500);
 }
 
 // EVENTS 

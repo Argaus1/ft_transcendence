@@ -15,6 +15,9 @@
         />
     </head>
     <body class="p-3 mb-2 bg-custom text-white">
+
+
+      <!-- NAVBAR -->
         <nav
         class="navbar navbar-expand-lg border-body"
         data-bs-theme="dark"
@@ -140,12 +143,25 @@
       </nav>
       <!-- <button onclick="stopGame()">Stop Game</button>
       <button onclick="runGame()">Start Game</button> -->
+
+
+      <!-- PONG GAME  -->
       <div id="game_carrousel" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
               <div id="menu" class="d-flex flex-column align-items-center gap-2">
+                <div id="logo" style="display: flex; align-items: center">
+                  <img
+                    id="racket"
+                    src="../imgs/ping-pong.png"
+                    alt="Logo"
+                    width="32"
+                    height="32"
+                    style="margin-right: 10px; filter: invert(1)"
+                  />
                   <h1 id="menu" class="display-1 montserrat-bold fw-bold">PONG</h1>
+                </div>
                   <article class="d-flex flex-column gap-2">
                     <h2 id="menu" class="display-6 montserrat-bold">Choose your game mode</h2>
                     <button id="start_button" value="pvp" class="btn btn-outline-light full-width btn-lg">1 vs 1</button>
@@ -158,24 +174,29 @@
                       <input id="player2" class="form-control" type="text" placeholder="Player 3">
                       <input id="player3" class="form-control" type="text" placeholder="Player 4">
                       <button id="send_tournament" value="tournament" class="btn btn-outline-success">Start Tournament</button>
-                    </article> 
+                    </article>
                   </article>
               </div>
-              <div id="bob" class="blob"></div>
-              <canvas id="game" style="display: none;"></canvas>
+              <canvas id="pong" style="display: none;"></canvas>
             </div>
           </div>
+
+
+          <!-- SECOND GAME -->
           <div class="carousel-item">
             <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
               <div id="menu2" class="d-flex flex-column align-items-center gap-2">
                 <h1 id="menu2" class="display-1 montserrat-bold fw-bold">SECOND GAME</h1>
                 <article class="d-flex flex-column gap-2">
-                  <button id="start_button_second" value="play" class="btn btn-light full-width btn-lg">Play</button>
+                  <button id="start_button_third" value="play" class="btn btn-light full-width btn-lg">Play</button>
                 </article>
-              <div id="bob" class="blob"></div>
+              <canvas id="rpc" style="display: none;"></canvas>
             </div>
           </div>
           </div>
+
+
+          <!-- THIRD GAME -->
           <div class="carousel-item">
             <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh">
               <div id="menu3" class="d-flex flex-column align-items-center gap-2">
@@ -183,15 +204,16 @@
                 <article class="d-flex flex-column gap-2">
                   <button id="start_button_third" value="play" class="btn btn-light full-width btn-lg">Play</button>
                 </article>
-              <div id="bob" class="blob"></div>
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#game_carrousel" data-bs-slide="prev">
+
+        <!-- CAROUSEL BUTTONS -->
+        <button id="test" class="carousel-control-prev" type="button" data-bs-target="#game_carrousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#game_carrousel" data-bs-slide="next">
+        </button>s
+        <button id="test2" class="carousel-control-next" type="button" data-bs-target="#game_carrousel" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
