@@ -4,6 +4,7 @@ import { RegisterPage } from './spa/register.js';
 import { LoginPage } from './spa/login.js';
 import { Games } from './spa/games.js';
 import { Pong } from './spa/pong.js';
+import { Btest } from './spa/b_test.js';
 
 const routes = {
   '/': HomePage,
@@ -11,6 +12,7 @@ const routes = {
   '/login' : LoginPage,
   '/games' : Games,
   '/pong' : Pong,
+  '/btest' : Btest,
 };
 
 const router = new Router(routes);
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       history.pushState(null, null, e.target.getAttribute('data-link'));
       router.navigate();
     }
-  });
+  });   
   
 	    // Add a specific event listener for the logo
 	const logo = document.querySelector('.navbar-brand[data-link]');

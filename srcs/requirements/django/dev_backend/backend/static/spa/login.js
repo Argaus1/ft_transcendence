@@ -87,7 +87,7 @@ export class LoginPage extends Page {
 	
 		  // Prepare the data to send
 		  const data = { email, password };
-	
+
 		  try {
 			// Send data to the backend
 			const response = await fetch('/api/login/', {
