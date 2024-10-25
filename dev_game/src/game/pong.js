@@ -463,10 +463,10 @@ function choose_gamemode(value)
     // need to check size of the name
   if (value == "pvp")
   {
-    player1.name = window.prompt("What's player 1 name?");
-    player2.name = window.prompt("What's player 2 name?");
     player1 = new Paddle(canvas.width / 2 - 70 / 2, 30, "white", "bapasqui");
     player2 = new Paddle(canvas.width / 2 - 70 / 2, canvas.height - 10 - 30, "white", "dboire");
+    player1.name = window.prompt("What's player 1 name?");
+    player2.name = window.prompt("What's player 2 name?");
   }
   if (value == "vsa")
   {
