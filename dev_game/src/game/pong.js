@@ -20,7 +20,7 @@ class Ball {
     this.vy = 1;
     this.radius = radius;
     this.color = color;
-    this.speed = 4; // ball speed 
+    this.speed = 4; // ball speed
   }
 
   draw() {
@@ -87,10 +87,6 @@ class Tournament {
 // CREATE INSTANCE
 ball = new Ball(canvas.width / 2, canvas.height / 2, 10, "white");
 
-// horyzontal
-player1 = new Paddle(canvas.width / 2 - 70 / 2, 30, "white", "bapasqui");
-player2 = new Paddle(canvas.width / 2 - 70 / 2, canvas.height - 10 - 30, "white", "dboire");
-
 function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
@@ -108,7 +104,7 @@ function debug_print()
   ctx.fillText("width : " + canvas.width, i, 120);
   ctx.fillText("height : " + canvas.height, i, 140);
   ctx.fillText("speed : " + ball.speed, i, 160);
-  animationFrameId = window.requestAnimationFrame(debug_print);  
+  animationFrameId = window.requestAnimationFrame(debug_print);
 }
 
 function draw_table() {
@@ -116,7 +112,9 @@ function draw_table() {
   // RESPONSIVE PART
   ctx.strokeStyle = "grey";
   ctx.lineWidth = 2;
-  
+
+  ctx.fillStyle = "white";
+
   if (canvas.width < 900)
   {
     ctx.beginPath();
@@ -188,9 +186,6 @@ function draw_ball() {
         document.getElementById("test").style.display = "block";
         document.getElementById("test2").style.display = "block";
       }
-      // sleep with promise not working
-      //await new Promise(r => setTimeout(r, 1000));
-      // add replay button
     }
   ball.draw();
 
@@ -246,13 +241,13 @@ function draw_ball() {
       ball.vy = -ball.vy;
     if (circleRectCollision(ball.x, ball.y, ball.radius, player2.x , player2.y, 70, 10))
       ball.vy = -ball.vy;
-    } else if (canvas.width > 900)
-    {
-      if (circleRectCollision(ball.x, ball.y, ball.radius, player1.x, player1.y, 10, 70))
-        ball.vx = -ball.vx;
-      if (circleRectCollision(ball.x, ball.y, ball.radius, player2.x, player2.y, 10, 70))
-        ball.vx = -ball.vx;
-    }
+  } else if (canvas.width > 900)
+  {
+    if (circleRectCollision(ball.x, ball.y, ball.radius, player1.x, player1.y, 10, 70))
+      ball.vx = -ball.vx;
+    if (circleRectCollision(ball.x, ball.y, ball.radius, player2.x, player2.y, 10, 70))
+      ball.vx = -ball.vx;
+  }
     animationFrameId = window.requestAnimationFrame(draw_ball);
 }
 
@@ -336,7 +331,7 @@ function checkKeyUp(e) {
 }
 function move_players() {
   if (!gameRunning) return;
-  const speedFactor = 0.5;
+  const speedFactor = 0.7;
 
   for (let key in keys) {
     let player = window[keys[key].player];
@@ -386,39 +381,29 @@ function updatePlayerLayout() {
 // add a zone since not working on smaller screen because of typed value
 // instead of calculated one
 function AI_mov_p2() {
-  const speed = 7;
-  if (canvas.width < 900)
-  {
-    if (ball.y > canvas.height / 2 + 200)
-    {
-       if (ball.x < player2.x) {
-           player2.x -= speed;
-       }
-       else if (ball.x > player2.x) {
-           player2.x += speed;
-       }
-       if (player2.x < 0) {
-           player2.x = 0;
-       } else if (player2.x + player2.width > canvas.width) {
-           player2.x = canvas.width - player2.width;
-       }
+  const speed = 3;
+  const easingFactor = 0.1;
+
+  if (canvas.width < 900) {
+    if (ball.y > canvas.height / 2 + 200) {
+      const targetX = ball.x - player2.width / 2;
+      player2.x += (targetX - player2.x) * easingFactor;
+
+      if (player2.x < 0) {
+        player2.x = 0;
+      } else if (player2.x + player2.width > canvas.width) {
+        player2.x = canvas.width - player2.width;
+      }
     }
-  }
-  else if (canvas.width >= 900)
-  {
-    if (ball.y < canvas.height / 2 + 200)
-    {
-      if (ball.y < player2.y) {
-          player2.y -= speed;
-      }
-      else if (ball.y > player2.y) {
-          player2.y += speed;
-      }
-  
+  } else if (canvas.width >= 900) {
+    if (ball.y < canvas.height / 2 + 200) {
+      const targetY = ball.y - player2.height / 2;
+      player2.y += (targetY - player2.y) * easingFactor;
+
       if (player2.y < 0) {
-          player2.y = 0;
+        player2.y = 0;
       } else if (player2.y + player2.height > canvas.height) {
-          player2.y = canvas.height - player2.height;
+        player2.y = canvas.height - player2.height;
       }
     }
   }
@@ -427,39 +412,29 @@ function AI_mov_p2() {
 
 
 function AI_mov_p1() {
-  const speed = 7;
-  if (canvas.width < 900)
-  {
-    if (ball.y < canvas.height / 2 - 200)
-    {
-      if (ball.x < player1.x) {
-          player1.x -= speed;
-      }
-      else if (ball.x > player1.x) {
-          player1.x += speed;
-      }
+  const speed = 3;
+  const easingFactor = 0.1;
+
+  if (canvas.width < 900) {
+    if (ball.y < canvas.height / 2 - 200) {
+      const targetX = ball.x - player1.width / 2;
+      player1.x += (targetX - player1.x) * easingFactor;
+
       if (player1.x < 0) {
-          player1.x = 0;
+        player1.x = 0;
       } else if (player1.x + player1.width > canvas.width) {
-          player1.x = canvas.width - player1.width;
+        player1.x = canvas.width - player1.width;
       }
     }
-  }
-  else if (canvas.width >= 900)
-  {
-    if (ball.x < canvas.width / 2 - 200)
-    {
-      if (ball.y < player1.y) {
-          player1.y -= speed;
-      }
-      else if (ball.y > player1.y) {
-          player1.y += speed;
-      }
-  
+  } else if (canvas.width >= 900) {
+    if (ball.x < canvas.width / 2 - 200) {
+      const targetY = ball.y - player1.height / 2;
+      player1.y += (targetY - player1.y) * easingFactor;
+
       if (player1.y < 0) {
-          player1.y = 0;
+        player1.y = 0;
       } else if (player1.y + player1.height > canvas.height) {
-          player1.y = canvas.height - player1.height;
+        player1.y = canvas.height - player1.height;
       }
     }
   }
@@ -490,17 +465,20 @@ function choose_gamemode(value)
   {
     player1.name = window.prompt("What's player 1 name?");
     player2.name = window.prompt("What's player 2 name?");
+    player1 = new Paddle(canvas.width / 2 - 70 / 2, 30, "white", "bapasqui");
+    player2 = new Paddle(canvas.width / 2 - 70 / 2, canvas.height - 10 - 30, "white", "dboire");
   }
   if (value == "vsa")
   {
-    player2.name = "AI";
-    player1.name = window.prompt("What's your name?");
+    let name = window.prompt("What's your name?");
+    player1 = new Paddle(canvas.width / 2 - 70 / 2, 30, "white", name);
+    player2 = new Paddle(canvas.width / 2 - 70 / 2, canvas.height - 10 - 30, "red", "AI");
     AI_mov_p2();
   }
   if (value == "ai")
   {
-    player1.name = "AI - 1";
-    player2.name = "AI - 2";
+    player1 = new Paddle(canvas.width / 2 - 70 / 2, 30, "red", "AI");
+    player2 = new Paddle(canvas.width / 2 - 70 / 2, canvas.height - 10 - 30, "red", "AI");
     AI_mov_p2();
     AI_mov_p1();
   }
@@ -515,14 +493,14 @@ function choose_gamemode(value)
     else
       player2.name = document.getElementById('player2').value;
     if (!document.getElementById('player3').value)
-      player3.name = "Player 3";  
+      player3.name = "Player 3";
     else
-      player3.name = document.getElementById('player3').value;  
+      player3.name = document.getElementById('player3').value;
     if (!document.getElementById('player4').value)
-      player4.name = "Player 4";  
+      player4.name = "Player 4";
     else
       player4.name = document.getElementById('player4').value;
-    
+
     let tournament = new Tournament(player1, player2, player3, player4);
     tournament.score = 0;
   }
@@ -566,12 +544,13 @@ function game(value) {
       draw_paddle();
       draw_table();
       draw_paddle();
-      move_players();
+      if (value != "ai")
+        move_players();
     }
   }, 500);
 }
 
-// EVENTS 
+// EVENTS
 window.addEventListener('resize', resizeCanvas, false);
 window.addEventListener('keydown', checkKeyDown, false);
 window.addEventListener('keyup', checkKeyUp, false);
