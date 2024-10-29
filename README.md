@@ -81,11 +81,8 @@ To achieve 100% completion, you need to complete 7 major modules.
 - [ ] Major : Infrastructure Setup with ELK (Elasticsearch, Logstash, Kibana) for Log Management. / 8
 - [ ] Minor : User and Game Stats Dashboards / 8.5
 - [ ] Major : Live Chat / 9.5
-
-**A voir :**
-- [ ] Major : Store the score of a tournament in the Blockchain.
-- [ ] Minor : Use a database for the backend -and more.
-
+- [ ] Major : Store the score of a tournament in the Blockchain. / 10.5
+- [ ] Minor : Use a database for the backend -and more. / 11
 
 <hr>
 
